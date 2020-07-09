@@ -16,10 +16,11 @@ makeCacheMatrix <- function(x) {
   getsolve <- function() m
   list(set = set, get = get, setsolve = setsolve, getsolve = getsolve)
 }
+
 ##
-## Same here, changed "mean" to "solve" and "m" to "s"
+## This fucntion will retrieve the m value(or atrribute) from the list
 cacheSolve <- function(x, ...) {
-  m <- x$getsolve()
+  m <- x$getsolve() #solved value
   
   if(!is.null(m)) {
     message("Resolviendo matriz inversa (English: Doing inverse)")
@@ -28,8 +29,8 @@ cacheSolve <- function(x, ...) {
   
   data <- x$get()
   m <- solve(data, ...)
-  x$setsolve(s)
-  s
+  x$setsolve(m)
+  m
 }
 
 ## Will run a test with a matrix nXn
