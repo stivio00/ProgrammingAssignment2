@@ -27,9 +27,8 @@ cacheSolve <- function(x, ...) {
     return(m)
   }
   
-  data <- x$get()
-  m <- solve(data, ...)
-  x$setsolve(m)
+  m <- solve(x$get() , ...)  #getter (lexical scoping the m value)
+  x$setsolve(m)              # Chaching the  value
   m
 }
 
